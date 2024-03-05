@@ -1,8 +1,22 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Pressable,
+} from 'react-native';
 
 const App = () => {
   const [name, setName] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const onPressHandler = () => {
+    setSubmitted(!submitted);
+  };
 
   return (
     <View style={styles.body}>
@@ -10,15 +24,59 @@ const App = () => {
       <TextInput
         multiline
         style={styles.input}
-        placeholder='e.g John'
-        onChangeText={(value) => setName(value)}
+        placeholder="e.g John"
+        onChangeText={value => setName(value)}
         maxLength={20}
         editable={true}
       />
+      {/*<Button*/}
+      {/*  title={submitted ? 'Clear' : 'Submit'}*/}
+      {/*  onPress={onPressHandler}*/}
+      {/*  color='#00f'*/}
+      {/*/>*/}
 
-      <Text style={styles.text}>
-        Your name is {name}
-      </Text>
+      {/*<TouchableOpacity*/}
+      {/*  style={styles.button}*/}
+      {/*  onPress={onPressHandler}*/}
+      {/*  activeOpacity={0.2}*/}
+      {/*>*/}
+      {/*  <Text style={styles.text}>*/}
+      {/*    {submitted ? 'Clear' : 'Submit'}*/}
+      {/*  </Text>*/}
+      {/*</TouchableOpacity>*/}
+
+      {/*<TouchableHighlight*/}
+      {/*  style={styles.button}*/}
+      {/*  onPress={onPressHandler}*/}
+      {/*  activeOpacity={0.2}*/}
+      {/*  underlayColor='#dddddd'*/}
+      {/*>*/}
+      {/*  <Text style={styles.text}>*/}
+      {/*    {submitted ? 'Clear' : 'Submit'}*/}
+      {/*  </Text>*/}
+      {/*</TouchableHighlight>*/}
+
+      {/*<TouchableWithoutFeedback*/}
+      {/*  style={styles.button}*/}
+      {/*  onPress={onPressHandler}*/}
+      {/*>*/}
+      {/*  <Text style={styles.text}>*/}
+      {/*    {submitted ? 'Clear' : 'Submit'}*/}
+      {/*  </Text>*/}
+      {/*</TouchableWithoutFeedback>*/}
+
+      <Pressable
+        onPress={onPressHandler}
+        hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
+        android_ripple={{color: '#00f'}}
+        style={({pressed}) => [
+          {backgroundColor: pressed ? '#dddddd' : '#00ff00'},
+          styles.button,
+        ]}>
+        <Text style={styles.text}>{submitted ? 'Clear' : 'Submit'}</Text>
+      </Pressable>
+
+      {submitted ? <Text style={styles.text}>Your name is {name}</Text> : null}
     </View>
   );
 };
@@ -43,6 +101,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     textAlign: 'center',
     fontSize: 15,
+    marginBottom: 10,
+  },
+  button: {
+    width: 150,
+    height: 50,
+    alignItems: 'center',
   },
 });
 
