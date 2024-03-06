@@ -11,8 +11,11 @@ import {
   Pressable,
   Alert,
   Modal,
-  Image, ImageBackground
-} from "react-native";
+  Image,
+  ImageBackground,
+} from 'react-native';
+import CustomButton from './CustomButton.tsx';
+import Header from './Header.tsx';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -34,14 +37,15 @@ const App = () => {
   return (
     <ImageBackground
       style={styles.body}
-      source={{ uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/35/texture-145968_960_720.png' }}
-    >
+      source={{
+        uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/35/texture-145968_960_720.png',
+      }}>
+      <Header/>
       <Modal
         visible={showModal}
         transparent
         onRequestClose={() => setShowModal(false)}
-        animationType='fade'
-      >
+        animationType="fade">
         <View style={styles.centered_view}>
           <View style={styles.warning_modal}>
             <View style={styles.warning_title}>
@@ -55,11 +59,8 @@ const App = () => {
             <Pressable
               onPress={() => setShowModal(false)}
               style={styles.warning_butoom}
-              android_ripple={{color: '#fff'}}
-            >
-              <Text style={styles.text}>
-                Ok
-              </Text>
+              android_ripple={{color: '#fff'}}>
+              <Text style={styles.text}>Ok</Text>
             </Pressable>
           </View>
         </View>
@@ -107,36 +108,45 @@ const App = () => {
       {/*  </Text>*/}
       {/*</TouchableWithoutFeedback>*/}
 
-      <Pressable
-        onPress={onPressHandler}
-        hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
-        android_ripple={{color: '#00f'}}
-        style={({pressed}) => [
-          {backgroundColor: pressed ? '#dddddd' : '#00ff00'},
-          styles.button,
-        ]}>
-        <Text style={styles.text}>{submitted ? 'Clear' : 'Submit'}</Text>
-      </Pressable>
+      <CustomButton
+        onPressFunction={onPressHandler}
+        title={submitted ? 'Clear' : 'Submit'}
+        color={'#00ff00'}
+      />
 
-      {
-        submitted ?
-          <View style={styles.body}>
-            <Text style={styles.text}>
-              Your are  registred as  {name}
-            </Text>
-            <Image
-              style={styles.image}
-              source={require('./assets/done.png')}
-              resizeMode='stretch'
-            />
-          </View>
-          :
+      <CustomButton
+        onPressFunction={onPressHandler}
+        title={'Test'}
+        color={'#ff00ff'}
+        style={{margin:10}}
+      />
+      {/*<Pressable*/}
+      {/*  onPress={onPressHandler}*/}
+      {/*  hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}*/}
+      {/*  android_ripple={{color: '#00f'}}*/}
+      {/*  style={({pressed}) => [*/}
+      {/*    {backgroundColor: pressed ? '#dddddd' : '#00ff00'},*/}
+      {/*    styles.button,*/}
+      {/*  ]}>*/}
+      {/*  <Text style={styles.text}>{submitted ? 'Clear' : 'Submit'}</Text>*/}
+      {/*</Pressable>*/}
+
+      {submitted ? (
+        <View style={styles.body}>
+          <Text style={styles.text}>Your are registred as {name}</Text>
           <Image
             style={styles.image}
-            source={require('./assets/error.png')}
-            resizeMode='stretch'
+            source={require('../assets/done.png')}
+            resizeMode="stretch"
           />
-      }
+        </View>
+      ) : (
+        <Image
+          style={styles.image}
+          source={require('../assets/error.png')}
+          resizeMode="stretch"
+        />
+      )}
     </ImageBackground>
   );
 };
@@ -199,13 +209,13 @@ const styles = StyleSheet.create({
   warning_butoom: {
     backgroundColor: '#00ffff',
     borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20
+    borderBottomRightRadius: 20,
   },
   image: {
     width: 100,
     height: 100,
     margin: 10,
-  }
+  },
 });
 
 export default App;
