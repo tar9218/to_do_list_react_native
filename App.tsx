@@ -11,7 +11,8 @@ import {
   Pressable,
   Alert,
   Modal,
-} from 'react-native';
+  Image, ImageBackground
+} from "react-native";
 
 const App = () => {
   const [name, setName] = useState('');
@@ -31,7 +32,10 @@ const App = () => {
   };
 
   return (
-    <View style={styles.body}>
+    <ImageBackground
+      style={styles.body}
+      source={{ uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/35/texture-145968_960_720.png' }}
+    >
       <Modal
         visible={showModal}
         transparent
@@ -66,8 +70,6 @@ const App = () => {
         style={styles.input}
         placeholder="e.g John"
         onChangeText={value => setName(value)}
-        maxLength={20}
-        editable={true}
       />
       {/*<Button*/}
       {/*  title={submitted ? 'Clear' : 'Submit'}*/}
@@ -116,15 +118,33 @@ const App = () => {
         <Text style={styles.text}>{submitted ? 'Clear' : 'Submit'}</Text>
       </Pressable>
 
-      {submitted ? <Text style={styles.text}>Your name is {name}</Text> : null}
-    </View>
+      {
+        submitted ?
+          <View style={styles.body}>
+            <Text style={styles.text}>
+              Your are  registred as  {name}
+            </Text>
+            <Image
+              style={styles.image}
+              source={require('./assets/done.png')}
+              resizeMode='stretch'
+            />
+          </View>
+          :
+          <Image
+            style={styles.image}
+            source={require('./assets/error.png')}
+            resizeMode='stretch'
+          />
+      }
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
     alignItems: 'center',
     marginTop: 10,
   },
@@ -180,6 +200,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#00ffff',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 10,
   }
 });
 
