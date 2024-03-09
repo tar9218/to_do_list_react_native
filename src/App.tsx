@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import ScreenA from "./ScreenA.tsx";
-import ScreenB from "./ScreenB.tsx";
+import Home from "./screens/Home.tsx";
+import Login from "./screens/Login.tsx";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
@@ -13,19 +13,19 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 // const Tab = createBottomTabNavigator();
 // const Tab = createMaterialBottomTabNavigator();
 // const Tab = createMaterialTopTabNavigator();
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
+
+const Stack = createStackNavigator();
 
 
 
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName='ScreenA'
+      <Stack.Navigator
+        initialRouteName='Login'
         screenOptions={{
           headerShown: true,
-          swipeEnabled: true,
-          gestureEnabled: true,
           headerStyle: {
             backgroundColor: '#0080ff',
           },
@@ -36,37 +36,19 @@ function App() {
           }
         }}
       >
-        <Drawer.Screen
-          name="ScreenA"
-          component={ScreenA}
+        <Stack.Screen
+          name="Login"
+          component={Login}
           options={{
-            title: 'Screen_A Title',
-            drawerIcon:({focused}) => (
-              <FontAwesome5
-                name="autoprefixer"
-                size={focused ? 25 : 20}
-                color={focused ? '#0080ff' : '#999999'}
-              />
-            )
+           headerShown: false,
           }}
         />
 
-        <Drawer.Screen
-          name="ScreenB"
-          component={ScreenB}
-          options={{
-            title: 'Screen_B Title',
-            drawerIcon:({focused}) => (
-              <FontAwesome5
-                name="btc"
-                size={focused ? 25 : 20}
-                color={focused ? '#0080ff' : '#999999'}
-              />
-            )
-          }}
-          initialParams={{itemName: 'Item from Drawer', itemId: 12}}
+        <Stack.Screen
+          name="Home"
+          component={Home}
         />
-      </Drawer.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

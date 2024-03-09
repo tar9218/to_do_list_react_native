@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* newReactNativTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* newReactNativTests.m */; };
+		06C1623D8BDA4E89B59C1B6A /* IndieFlower-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A27C42469354461A19155C3 /* IndieFlower-Regular.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-newReactNativ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-newReactNativ.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		22FA70E1755149B8B2E5706B /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDF985B2C9B94BBE8107E82C /* DancingScript-Regular.ttf */; };
+		26F9AD2A0FC74EF8A6765CDA /* AbrilFatface-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91E7063BE3094B6FB8B37741 /* AbrilFatface-Regular.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-newReactNativ-newReactNativTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-newReactNativ-newReactNativTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CEF1A8582B9C308C00482526 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF1A8452B9C308C00482526 /* Fontisto.ttf */; };
@@ -62,6 +65,8 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-newReactNativ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-newReactNativ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = newReactNativ/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-newReactNativ-newReactNativTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newReactNativ-newReactNativTests.release.xcconfig"; path = "Target Support Files/Pods-newReactNativ-newReactNativTests/Pods-newReactNativ-newReactNativTests.release.xcconfig"; sourceTree = "<group>"; };
+		91E7063BE3094B6FB8B37741 /* AbrilFatface-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AbrilFatface-Regular.ttf"; path = "../assets/fonts/AbrilFatface-Regular.ttf"; sourceTree = "<group>"; };
+		9A27C42469354461A19155C3 /* IndieFlower-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "IndieFlower-Regular.ttf"; path = "../assets/fonts/IndieFlower-Regular.ttf"; sourceTree = "<group>"; };
 		CEF1A8452B9C308C00482526 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		CEF1A8462B9C308C00482526 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		CEF1A8472B9C308C00482526 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		CEF1A8552B9C308C00482526 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		CEF1A8562B9C308C00482526 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		CEF1A8572B9C308C00482526 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		DDF985B2C9B94BBE8107E82C /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Regular.ttf"; path = "../assets/fonts/DancingScript-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -145,6 +151,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4E2E16EBC7414D9A98CD72A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91E7063BE3094B6FB8B37741 /* AbrilFatface-Regular.ttf */,
+				DDF985B2C9B94BBE8107E82C /* DancingScript-Regular.ttf */,
+				9A27C42469354461A19155C3 /* IndieFlower-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +178,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				4E2E16EBC7414D9A98CD72A6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -328,6 +346,9 @@
 				CEF1A8672B9C308D00482526 /* FontAwesome6_Solid.ttf in Resources */,
 				CEF1A85B2B9C308C00482526 /* FontAwesome6_Regular.ttf in Resources */,
 				CEF1A86A2B9C308D00482526 /* MaterialIcons.ttf in Resources */,
+				26F9AD2A0FC74EF8A6765CDA /* AbrilFatface-Regular.ttf in Resources */,
+				22FA70E1755149B8B2E5706B /* DancingScript-Regular.ttf in Resources */,
+				06C1623D8BDA4E89B59C1B6A /* IndieFlower-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

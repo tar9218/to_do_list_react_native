@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     alignItems: 'center',
+    marginBottom:20,
   },
 });
 export default CustomButton;
