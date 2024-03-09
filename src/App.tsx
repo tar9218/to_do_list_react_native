@@ -9,6 +9,8 @@ import {createMaterialBottomTabNavigator} from "@react-navigation/material-botto
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Provider } from 'react-redux';
+import { Store } from './redux/store';
 
 // const Tab = createBottomTabNavigator();
 // const Tab = createMaterialBottomTabNavigator();
@@ -21,35 +23,37 @@ const Stack = createStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName='Login'
-        screenOptions={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: '#0080ff',
-          },
-          headerTintColor: '#ffffff',
-          headerTitleStyle: {
-            fontSize: 25,
-            fontWeight: 'bold'
-          }
-        }}
-      >
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-           headerShown: false,
+    <Provider store={Store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName='Login'
+          screenOptions={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#0080ff',
+            },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: {
+              fontSize: 25,
+              fontWeight: 'bold'
+            }
           }}
-        />
+        >
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerShown: false,
+            }}
+          />
 
-        <Stack.Screen
-          name="Home"
-          component={Home}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
