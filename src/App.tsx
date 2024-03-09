@@ -64,6 +64,7 @@ function App() {
               />
             )
           }}
+          initialParams={{itemName: 'Item from Drawer', itemId: 12}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
