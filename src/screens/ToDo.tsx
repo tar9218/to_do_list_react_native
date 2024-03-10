@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setTaskID, setTasks } from "../redux/actions";
 import GlobalStyle from "../utils/GlobalStyle";
+import Checkbox from "@react-native-community/checkbox";
 export default function ToDo({navigation}) {
   const {tasks} = useSelector(state => state.taskReducer);
   const dispatch = useDispatch();
@@ -24,11 +25,35 @@ export default function ToDo({navigation}) {
       .catch(err => console.log(err));
   }
 
+  const deleteTask = (id) => {
+    const filteredTasks = tasks.filter(task => task.ID !== id);
+    AsyncStorage.setItem('Task', JSON.stringify(filteredTasks))
+      .then(() => {
+         dispatch(setTasks(filteredTasks));
+         Alert.alert('Success', 'Task removed successfully');
+      })
+      .catch(err => console.log(err));
+  }
+
+  const checkTask = (id, newValue) => {
+    const index = tasks.findIndex(task => task.ID === id);
+    if (index > -1) {
+      let newTasks = [...tasks];
+      newTasks[index].Done = newValue;
+      AsyncStorage.setItem('Tasks', JSON.stringify(newTasks))
+        .then(() => {
+          dispatch(setTasks(newTasks));
+          Alert.alert('Success!', 'Task state is changed.');
+        })
+        .catch(err => console.log(err))
+    }
+  }
+
 
   return(
     <View style={styles.body}>
       <FlatList
-        data={tasks}
+        data={tasks.filter(task => task.Done === false)}
         renderItem={({item}) => (
           <TouchableOpacity
             style={styles.item}
@@ -38,25 +63,49 @@ export default function ToDo({navigation}) {
             }}
           >
             <View style={styles.item_row}>
-              <View>
-                <Text style={[
-                  styles.title,
-                  GlobalStyle.CustomFontHW
-                ]}
-                      numberOfLines={1}
-                >
-                  {item.Title}
-                </Text>
+              <View
+                style={[
+                  {
+                    backgroundColor:
+                    item.Color === 'red' ? '#f28b82' :
+                    item.Color === 'blue' ? '#aecbfa' :
+                    item.Color === 'green' ? '#ccff90' : '#ffffff'
+                  },
+                  styles.color]}
+              />
+              <Checkbox
+                value={item.Done}
+                onValueChange={(newValue) => {checkTask(item.ID, newValue)}}
+              />
+                <View style={styles.item_body}>
+                    <Text style={[
+                      styles.title,
+                      GlobalStyle.CustomFontHW
+                    ]}
+                          numberOfLines={1}
+                    >
+                      {item.Title}
+                    </Text>
 
-                <Text style={[
-                  styles.subtitle,
-                  GlobalStyle.CustomFontHW
-                ]}
-                      numberOfLines={1}
-                >
-                  {item.Desc}
-                </Text>
-              </View>
+                    <Text style={[
+                      styles.subtitle,
+                      GlobalStyle.CustomFontHW
+                    ]}
+                          numberOfLines={1}
+                    >
+                      {item.Desc}
+                    </Text>
+                </View>
+              <TouchableOpacity
+                style={styles.delete}
+                onPress={() => {deleteTask(item.ID)}}
+              >
+                  <FontAwesome5
+                     name={'trash'}
+                     size={25}
+                     color={'#ff3636'}
+                  />
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
         )}
