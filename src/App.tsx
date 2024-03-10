@@ -2,8 +2,9 @@ import React from 'react';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from "./screens/Home.tsx";
-import Login from "./screens/Login.tsx";
+import ToDo from "./screens/ToDo.tsx";
+import Done from "./screens/Done.tsx";
+import Splash from "./screens/Splash.tsx";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
@@ -11,21 +12,53 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Provider } from 'react-redux';
 import { Store } from './redux/store';
+import Task from "./screens/Task.tsx";
 
-// const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 // const Tab = createMaterialBottomTabNavigator();
 // const Tab = createMaterialTopTabNavigator();
 // const Drawer = createDrawerNavigator();
 
-const Stack = createStackNavigator();
 
-
-
+function HomeTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={
+        ({ route }) => ({
+          tabBarIcon: ({ focused, size, color }) => {
+            let iconName;
+            if (route.name === 'To-Do') {
+              iconName = 'clipboard-list';
+              size = focused ? 25 : 20;
+            } else if (route.name === 'Done') {
+              iconName = 'clipboard-check';
+              size = focused ? 25 : 20;
+            }
+            return (
+              <FontAwesome5
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            );
+          },
+          tabBarActiveTintColor: '#0080ff',
+          tabBarInactiveTintColor: '#777777',
+          tabBarLabelStyle: { fontSize: 15, fontWeight: 'bold' }
+          })
+      }
+    >
+      <Tab.Screen name={'To-Do'} component={ToDo} />
+      <Tab.Screen name={'Done'} component={Done} />
+    </Tab.Navigator>
+  );
+}
+const RootStack = createStackNavigator();
 function App() {
   return (
     <Provider store={Store}>
       <NavigationContainer>
-        <Stack.Navigator
+        <RootStack.Navigator
           initialRouteName='Login'
           screenOptions={{
             headerShown: true,
@@ -39,19 +72,24 @@ function App() {
             }
           }}
         >
-          <Stack.Screen
-            name="Login"
-            component={Login}
+          <RootStack.Screen
+            name="Splash"
+            component={Splash}
             options={{
               headerShown: false,
             }}
           />
 
-          <Stack.Screen
-            name="Home"
-            component={Home}
+          <RootStack.Screen
+            name="My Tasks"
+            component={HomeTabs}
           />
-        </Stack.Navigator>
+
+          <RootStack.Screen
+            name="Task"
+            component={Task}
+          />
+        </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
   );

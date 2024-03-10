@@ -1,12 +1,10 @@
 import {StyleSheet} from "react-native";
 
 export default StyleSheet.create({
-  CustomFont: {
+  CustomFontBig: {
+    fontFamily: 'AbrilFatface-Regular'
+  },
+  CustomFontHW: {
     fontFamily: 'DancingScript-Regular'
   },
-  ButtonText: {
-    fontFamily: 'AbrilFatface-Regular',
-    fontSize: 25,
-    padding: 10,
-  }
 });
